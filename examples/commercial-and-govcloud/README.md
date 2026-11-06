@@ -9,13 +9,13 @@ Connects a commercial AWS account and a GovCloud account from one configuration.
 3. Apply:
 
    ```bash
-   terraform init
+   tofu init
    ```
 
    ```bash
-   terraform apply
+   tofu apply
    ```
 
 4. Paste `secureframe_commercial_role_arn` into the commercial connection and `secureframe_govcloud_role_arn` into the GovCloud connection.
 
-OpenTofu works the same way with `tofu init` and `tofu apply`.
+With Terraform, run the same commands with `terraform`.

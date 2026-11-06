@@ -9,6 +9,10 @@ The role has the same trust policy and permissions as the Secureframe CloudForma
 1. In Secureframe, add an AWS connection and choose the connection type (account or organization) and account type (Commercial or GovCloud).
 2. Copy the external ID. Each Secureframe connection has its own, so a commercial account and a GovCloud account need separate IDs. The management account and every member account of one organization use the same ID.
 
+## OpenTofu and Terraform
+
+The configuration is the same for both tools: the same `source`, inputs, and outputs. Run `tofu init` and `tofu apply`, or the same commands with `terraform`. CI tests the module and every example with OpenTofu 1.12 and Terraform 1.9.
+
 ## Usage
 
 Set `account_type` for where the role lives:
@@ -77,10 +81,9 @@ provider "aws" {
 | ------- | ----- |
 | [`organization`](examples/organization) | Management account and two member accounts in one configuration, default options |
 | [`organization-advanced`](examples/organization-advanced) | The same, with a custom role name and path, permissions boundary, session duration, managed policy, and tags |
-| [`organization-opentofu`](examples/organization-opentofu) | Management account and any number of member accounts, using OpenTofu provider `for_each` |
 | [`commercial-and-govcloud`](examples/commercial-and-govcloud) | A commercial and a GovCloud account in one configuration |
 
-Set `allowed_account_ids` on each AWS provider, as the examples do. Terraform then stops before changing anything if the credentials belong to a different account.
+Set `allowed_account_ids` on each AWS provider, as the examples do. The plan then stops before changing anything if the credentials belong to a different account.
 
 ## Finish in Secureframe
 

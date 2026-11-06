@@ -11,19 +11,19 @@ Secureframe does not ask for member role ARNs. It builds each one from the manag
 3. Apply:
 
    ```bash
-   terraform init
+   tofu init
    ```
 
    With credentials for the member account:
 
    ```bash
-   terraform apply -var 'external_id=<external ID>' -var 'account_id=<member account ID>'
+   tofu apply -var 'external_id=<external ID>' -var 'account_id=<member account ID>'
    ```
 
    From the management account, through the role AWS Organizations creates in new accounts:
 
    ```bash
-   terraform apply -var 'external_id=<external ID>' -var 'account_id=<member account ID>' -var 'assume_role_arn=arn:aws:iam::<member account ID>:role/OrganizationAccountAccessRole'
+   tofu apply -var 'external_id=<external ID>' -var 'account_id=<member account ID>' -var 'assume_role_arn=arn:aws:iam::<member account ID>:role/OrganizationAccountAccessRole'
    ```
 
    For GovCloud, add `-var 'region=us-gov-west-1'`, use GovCloud credentials, and use `arn:aws-us-gov` in `assume_role_arn`.
@@ -33,7 +33,7 @@ Secureframe does not ask for member role ARNs. It builds each one from the manag
 4. Check that the `role_arn` output matches the management account's `role_arn` except for the account ID.
 5. Repeat for each member account, using a separate state for each, for example a separate directory or workspace.
 
-OpenTofu works the same way with `tofu init` and `tofu apply`. To manage the management account and several member accounts in one configuration, see the [organization example](../organization).
+With Terraform, run the same commands with `terraform`. To manage the management account and several member accounts in one configuration, see the [organization example](../organization).
 
 New member accounts are not covered automatically. Add this module to the process that creates accounts, for example an Account Factory for Terraform customization.
 

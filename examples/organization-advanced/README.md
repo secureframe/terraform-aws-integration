@@ -24,16 +24,16 @@ Connects an AWS organization from one configuration, the management account and 
 4. Apply:
 
    ```bash
-   terraform init
+   tofu init
    ```
 
    ```bash
-   terraform apply
+   tofu apply
    ```
 
 5. Paste the `role_arn` output, `arn:<partition>:iam::<management account ID>:role/vendors/secureframe/secureframe-audit`, into the Role ARN field in Secureframe, select the member accounts, and finish the setup.
 
-OpenTofu works the same way with `tofu init` and `tofu apply`.
+With Terraform, run the same commands with `terraform`.
 
 ## Creates in each account
 

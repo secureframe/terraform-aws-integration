@@ -11,22 +11,22 @@ Connects an AWS organization from one configuration: the Secureframe role in the
 5. Apply:
 
    ```bash
-   terraform init
+   tofu init
    ```
 
    ```bash
-   terraform apply
+   tofu apply
    ```
 
    Each provider has `allowed_account_ids`, so the plan stops if any credentials lead to the wrong account.
 
 6. Paste the `role_arn` output into the Role ARN field in Secureframe, select the member accounts, and finish the setup.
 
-OpenTofu works the same way with `tofu init` and `tofu apply`.
+With Terraform, run the same commands with `terraform`.
 
 ## Adding a member account
 
-Copy a member `provider` block and `module` block, give them a new alias and module name, set the account ID, and apply.
+Copy the `member_b_account_id` line in `locals` and the `member_b` `provider` and `module` blocks. In each copy, rename `member_b` everywhere it appears, and set the new account ID. Then apply.
 
 ## Creates
 

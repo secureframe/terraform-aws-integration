@@ -6,24 +6,23 @@ Connects one AWS account to Secureframe. Use this for an account that is not con
 
 1. In Secureframe, add an AWS connection. Choose **Connect AWS account** and the account type: Commercial or GovCloud.
 2. Copy the external ID.
-3. Sign in to the AWS account with permission to create IAM roles and policies.
-4. Apply:
+3. In `main.tf`, replace the placeholders in `locals`: the external ID and the account ID. For GovCloud, also set `region` to a GovCloud region such as `us-gov-west-1`.
+4. Sign in to the AWS account with permission to create IAM roles and policies. For GovCloud, use GovCloud credentials.
+5. Apply:
 
    ```bash
-   terraform init
+   tofu init
    ```
 
    ```bash
-   terraform apply -var 'external_id=<external ID>' -var 'account_id=<account ID>'
+   tofu apply
    ```
-
-   For GovCloud, add `-var 'region=us-gov-west-1'` and use GovCloud credentials.
 
    `account_id` guards against applying with the wrong credentials: the AWS provider stops if they belong to any other account.
 
-5. Paste the `role_arn` output into the Role ARN field in Secureframe and finish the setup.
+6. Paste the `role_arn` output into the Role ARN field in Secureframe and finish the setup.
 
-OpenTofu works the same way with `tofu init` and `tofu apply`.
+With Terraform, run the same commands with `terraform`.
 
 ## Creates
 

@@ -10,11 +10,11 @@ Creates the Secureframe role in the management account of an AWS organization. S
 4. Apply:
 
    ```bash
-   terraform init
+   tofu init
    ```
 
    ```bash
-   terraform apply -var 'external_id=<external ID>' -var 'account_id=<account ID>'
+   tofu apply -var 'external_id=<external ID>' -var 'account_id=<account ID>'
    ```
 
    For GovCloud, add `-var 'region=us-gov-west-1'` and use GovCloud credentials.
@@ -24,7 +24,7 @@ Creates the Secureframe role in the management account of an AWS organization. S
 5. Create the role in each member account with the [member account example](../member), using the same external ID.
 6. Paste the `role_arn` output from this example into the Role ARN field in Secureframe, select the member accounts to scan, and finish the setup.
 
-OpenTofu works the same way with `tofu init` and `tofu apply`.
+With Terraform, run the same commands with `terraform`.
 
 ## Creates
 
